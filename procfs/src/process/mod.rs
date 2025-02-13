@@ -78,7 +78,6 @@ use std::ffi::OsString;
 use std::fs::read_link;
 use std::io::{self, Read};
 use std::os::unix::ffi::OsStringExt;
-use std::os::unix::fs::MetadataExt;
 use std::path::PathBuf;
 use std::str::FromStr;
 
@@ -137,7 +136,7 @@ impl FDInfo {
         let link_os: &OsStr = link.as_ref();
         Ok(Self {
             fd: raw_fd,
-            mode: ((md.mode() as RawMode) & Mode::RWXU.bits()) as u16,
+            mode: Mode::RWXU.bits() as u16,
             target: expect!(FDTarget::from_str(expect!(link_os.to_str()))),
         })
     }
