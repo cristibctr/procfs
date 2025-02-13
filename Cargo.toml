@@ -13,3 +13,7 @@ categories = ["os::unix-apis", "filesystem"]
 license = "MIT OR Apache-2.0"
 edition = "2018"
 rust-version = "1.70"
+
+[patch.crates-io]
+rustix = { git = "https://github.com/cristibctr/rustix", branch = "feat/add-wasm-support" }
+libc = { git = "https://github.com/cristibctr/libc-0.2.169", branch = "wasix-0.2.169" }
